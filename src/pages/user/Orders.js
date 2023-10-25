@@ -32,6 +32,7 @@ const Orders = () => {
           <div className="col-md-9">
             <h1 className="text-center">All Orders</h1>
             {orders?.map((o, i) => {
+              console.log(o);
               return (
                 <div className="border shadow">
                   <table className="table">
@@ -50,7 +51,11 @@ const Orders = () => {
                         <td>{i + 1}</td>
                         <td>{o?.status}</td>
                         <td>{o?.buyer?.name}</td>
-                        <td>{moment(o?.createAt).fromNow()}</td>
+                        <td>
+                          {moment(o?.createdAt).format(
+                            "MMMM Do YYYY, h:mm:ss a"
+                          )}
+                        </td>
                         <td>{o?.payment.success ? "Success" : "Failed"}</td>
                         <td>{o?.products?.length}</td>
                       </tr>
